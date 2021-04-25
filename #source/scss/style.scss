@@ -1,0 +1,895 @@
+//подключаю нужные шрифты
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;500;600;700&display=swap');
+
+
+//импорт обнуляющих стилей
+@import 'nullstyle.scss';
+
+
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+body{
+	font-family: 'Jost', sans-serif;
+	font-weight: 500;
+}
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+.container{
+	max-width: 1200px;
+	margin: 0 auto;
+	@media (max-width: 1024px){
+		margin: 0 20px;
+	}
+}
+//=======================================================================================
+//========================================================================
+//=============================================================
+.content {
+	padding: 40px 0px 0px 0px;
+	flex: 1 1 auto;
+}
+
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+	&:before{
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #f3f3f3;
+		z-index: 2;
+	}
+	&__body {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		height: 60px;
+		align-items: center;
+	}
+	&__list {
+		display: flex;
+		position: relative;
+		z-index: 2;
+		li{
+			list-style-type: none;
+			margin: 0px 40px 0px 40px;
+		}
+	}
+	&__link {
+		line-height: 15px;
+		color: #3c3c3c;
+		font-size: 20px;
+		font-weight: 500;
+		cursor: pointer;
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+}
+//=======================================================================================
+//========================================================================
+//=============================================================
+/* Шапка + бургер меню */
+@media (max-width: 768px){
+	body.lock{
+		overflow: hidden;
+	}
+	.header{
+		&__body {
+			height: 40px;
+		}
+		&__burger {
+			display: block;
+			position: relative;
+			width: 30px;
+			height: 20px;
+			position: relative;
+			z-index: 4;
+			span{
+				position: absolute;
+				background-color: #000;
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				top: 9px;
+				transition: all 0.5s ease 0s;
+			}
+			&:before,
+			&:after{
+				content: '';
+				background-color: #000;
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				left: 0;
+				transition: all 0.5s ease 0s;
+			}
+			&:before{
+				top: 0;
+			}
+			&:after{
+				bottom: 0;
+			}
+			&.active span{
+				transform: scale(0);
+			}
+			&.active:before{
+				transform:rotate(45deg);
+				top: 9px;
+			}
+			&.active:after{
+				transform:rotate(-45deg);
+				bottom: 9px;
+			}
+		}
+		&__menu {
+			position: fixed;
+			top: -100%;
+			left: 0;
+			width: 100%;
+			height: 30%;
+			z-index: 1;
+			background-color: #fff;
+			padding: 80px 10px 0px 10px;
+			transition: all 0.5s ease 0s;
+			text-align: center;
+			overflow: auto;
+			&.active{
+				top: 0;
+			}
+		}
+		&__list {
+			display: block;
+			li{
+				margin: 0px 0px 20px 0px;
+			}
+		}
+		&__link {
+			line-height: 30px;
+			color: #3c3c3c;
+			font-size: 20px;
+			font-weight: 500;
+			text-transform: uppercase;
+			cursor: pointer;
+		}
+	}
+}
+.item-active{
+	color: #ada074;
+}
+
+
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+.main {
+	background: url(../img/map-background.jpg) 0 0/cover no-repeat;
+	background-position: center;
+	max-width: 100%;
+	background-attachment: fixed;
+	text-align: center;
+	&__row {
+		display: flex;
+		width: 100%;
+		height: 100vh;
+		justify-content: center;
+		align-items: center;
+		align-content: space-around;
+		flex-direction: column;
+	}
+	&__header {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	&__title {
+		color: #fff;
+		width: 80%;
+		font-size: 40px;
+		line-height: 1.2;
+		text-transform: uppercase;
+		font-weight: 700;
+		letter-spacing: 5.5px;
+	}
+	&__text {
+		width: 80%;
+		color: #c4c4c4;
+		font-size: 26px;
+		font-weight: 400;
+		letter-spacing: 5px;
+		line-height: 1.5;
+		position: relative;
+		&:after{
+			content:'';
+			position: absolute;
+			width: 50px;
+			height: 2px;
+			top: 70px;
+			left: 52.5%;
+			background-color: #fff;
+			margin: 20px 0px 0px -50px;
+		}
+	}
+	&__btn {
+		margin-top: 80px;
+		input{
+			background: none;
+			border: 2px solid #fff;
+			padding: 14px 40px 16px 42px;
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: 400;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			cursor: pointer;
+			&:hover{
+				background: #fff;
+				transition: all 0.5s ease 0s;
+				color: #000;
+			}
+		}
+	}
+}
+.link {
+	text-decoration: none;
+	cursor: pointer;
+}
+//=======================================================================================
+//========================================================================
+//=============================================================
+@media (max-width: 768px){
+	.main {
+		&__title {
+			max-width: 100%;
+			font-size: 24px;
+			line-height: 50px;
+			letter-spacing: 5px;
+		}
+		&__text {
+			font-size: 14px;
+			letter-spacing: 2px;
+			max-width: 60%;
+			&:after{
+				top: 60px;
+				left: 60%;
+			}
+		}
+		&__btn {
+			margin-top: 7rem;
+			input{
+				font-size: 14px;
+				letter-spacing: 2px;
+			}
+		}
+	}
+}
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+/* Общий стиль для блоков с текстом на белом фоне */
+.white-text{
+	font-size: 24px;
+	font-weight: 300;
+	h3{
+		font-weight: 600;
+		margin: 0 0 10px 0;
+	}
+}
+//=======================================================================================
+//========================================================================
+//=============================================================
+@media (max-width: 1025px){
+	.white-text {
+		font-size: 20px;
+		font-weight: 300;
+		h3{
+			font-weight: 600;
+			margin: 0 0 10px 0;
+		}
+	}
+}
+@media (max-width: 768px){
+	.white-text {
+		font-size: 16px;
+		font-weight: 300;
+		h3{
+			font-size: 18px;
+			font-weight: 600;
+			margin: 10px 0 10px 0;
+		}
+	}
+}
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+/* Общий стиль для блоков с черным фоном */
+.black-text{
+	color: #ebebeb;
+	font-size: 24px;
+	font-weight: 300;
+	h3{
+		color: #fff;
+		font-weight: 600;
+		margin: 0 0 10px 0;
+	}
+}
+//=======================================================================================
+//========================================================================
+//=============================================================
+@media (max-width: 1025px){
+	.black-text {
+		font-size: 20px;
+		font-weight: 300;
+		h3{
+			font-weight: 600;
+			margin: 0 0 10px 0;
+		}
+	}
+}
+@media (max-width: 768px){
+	.black-text {
+		font-size: 16px;
+		font-weight: 300;
+		h3{
+			font-size: 18px;
+			font-weight: 600;
+			margin: 10px 0 10px 0;
+		}
+	}
+}
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+
+.place {
+	background: #fff;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__body{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: top;
+	}
+	&__second{
+		margin: 50px 0 0 0;
+	}
+	&__image{
+		margin: 0 0 0 100px;
+		flex: 0 0 450px;
+		img{
+			max-width: 100%;
+		}
+	}
+	&__img{
+		margin: 0 100px 0 0;
+		flex: 0 0 450px;
+		img{
+			max-width: 100%;
+		}
+	}
+}
+//=======================================================================================
+//========================================================================
+//=============================================================
+
+@media (max-width: 1025px){
+	.place {
+		background: #fff;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&__body{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: top;
+			margin: 20px 0px;
+		}
+		&__second{
+			margin: 30px 0px 20px 0px;
+		}
+		&__image{
+			margin: 0 0 0 50px;
+			flex: 0 0 40%;
+			img{
+				max-width: 100%;
+			}
+		}
+		&__img{
+			margin: 0 50px 0 0;
+			flex: 0 0 40%;
+			img{
+				max-width: 100%;
+			}
+		}
+	}
+}
+@media (max-width: 768px){
+	.place {
+		height: auto;
+		&__body{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: top;
+		}
+		&__second{
+			margin-top: -20px;
+		}
+		&__image{
+			margin: 10px 0 10px 0;
+			flex: 0 0 20%;
+		}
+		&__img{
+			margin: 10px 0 10px 0;
+			flex: 0 0 20%;
+			order: 2;
+		}
+	}
+}
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+
+.tomb {
+	background: #3c3c3c;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__body{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: top;
+	}
+	&__second{
+		margin: 50px 0 0 0;
+	}
+	&__image{
+		margin: 0 0 0 100px;
+		flex: 0 0 450px;
+		img{
+			max-width: 100%;
+		}
+	}
+	&__img{
+		margin: 0 100px 0 0;
+		flex: 0 0 450px;
+		img{
+			max-width: 100%;
+		}
+	}
+}
+//=======================================================================================
+//========================================================================
+//=============================================================
+
+@media (max-width: 1025px){
+	.tomb {
+		height: auto;
+		&__body{
+			align-items: top;
+			margin: 20px 0px;
+		}
+		&__second{
+			margin: 30px 0px 20px 0px;
+		}
+		&__image{
+			margin: 0 0 0 50px;
+			flex: 0 0 40%;
+			img{
+				max-width: 100%;
+			}
+		}
+		&__img{
+			margin: 0 50px 0 0;
+			flex: 0 0 40%;
+			img{
+				max-width: 100%;
+			}
+		}
+	}
+}
+@media (max-width: 768px){
+	.tomb {
+		height: auto;
+		&__body{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: top;
+		}
+		&__second{
+			margin: -20px 0px 20px 0px;
+		}
+		&__image{
+			margin: 10px 0 10px 0;
+			flex: 0 0 20%;
+		}
+		&__img{
+			margin: 10px 0 10px 0;
+			flex: 0 0 20%;
+			order: 2;
+		}
+	}
+}
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+.otrar{
+	height: 100vh;
+	display: flex;
+	background: url(../img/test.jpg) 0 0/cover no-repeat;
+	background-position: center;
+	max-width: 100%;
+	background-attachment: fixed;
+	justify-content: center;
+	align-items: center;
+	@media (max-width: 768px) {
+		height: auto;
+		padding: 100px 0;
+	}
+	&__text{
+		@media (max-width: 768px) {
+			margin: 0 0px;
+		}
+		h3{
+			font-size: 30px;
+			margin: 0 0 20px 0;
+			color: #fff;
+			font-weight: 600;
+			@media (max-width: 768px) {
+				font-size: 24px;
+			}
+		}
+		p{
+			color: #dedede;
+			font-size: 24px;
+			font-weight: 300;
+			line-height: 1.3;
+			@media (max-width: 768px) {
+				font-size: 14px;
+			}
+		}
+	}
+	&__button{
+		margin: 40px 0 0 0;
+	}
+	&__checkMap{
+		background: none;
+		border: 2px solid #fff;
+		padding: 14px 30px 16px 32px;
+		color: #ffffff;
+		font-size: 14px;
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		cursor: pointer;
+		&:hover{
+			background: #fff;
+			transition: all 0.5s ease 0s;
+			color: #000;
+
+		}
+	}
+}
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+
+.nature {
+	background: #3c3c3c;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__body {
+		margin: 0px auto;
+	}
+	&__row {
+		display: flex;
+		font-size: 0;
+	}
+	&__column {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+	&__item {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		flex-direction: column;
+		flex: 0 0 50%;
+		padding: 0 10px;
+		&__icon {
+			width: 100%;
+			img{
+				max-width: 100%;
+				margin: 0 0 20px 0;
+			}
+		}
+	}
+}
+//=======================================================================================
+//========================================================================
+//=============================================================
+
+@media (max-width: 1025px){
+	.nature{
+		height: auto;
+		&__body {
+			margin: 40px 10px;
+		}
+		&__text{
+			font-size: 20px;
+		}
+	}
+}
+@media (max-width: 768px){
+	.nature {
+		background: #3c3c3c;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&__body {
+			margin: 20px 10px;
+		}
+		&__row {
+			display: flex;
+			font-size: 0;
+		}
+		&__column {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+		&__item {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-direction: column;
+			flex: 0 0 50%;
+			padding: 0 10px;
+			&__icon {
+				width: 100%;
+				img{
+					max-width: 100%;
+					margin: 10px 0 20px 0;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 550px){
+	.nature {
+		background: #3c3c3c;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&__body {
+			margin: 0px -10px;
+		}
+		&__row {
+			display: flex;
+			font-size: 0;
+		}
+		&__column {
+			display: block;
+		}
+		&__text{
+			color: #ebebeb;
+			font-size: 16px;
+			font-weight: 300;
+			margin: 0 0 10px 0;
+			h3{
+				font-size: 18px;
+				color: #fff;
+				font-weight: 600;
+				margin: 0 0 10px 0;
+			}
+		}
+		&__item {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-direction: column;
+			flex: 0 0 100%;
+			padding: 0 10px;
+			&__icon {
+				width: 100%;
+				img{
+					max-width: 100%;
+					margin: 10px 0 20px 0;
+				}
+			}
+		}
+	}
+}
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+
+.contact {
+	height: auto;
+	background-color: #3c3c3c;
+	&__row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 30px 0px 50px 0px;
+	}
+	&__title{
+		padding: 40px 0 0 0;
+		color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 28px;
+	}
+	&__row-item {
+		min-height: 100%;
+	}
+	&__btn {
+		padding: 0 0 40px 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		input{
+			background: none;
+			border: 2px solid #fff;
+			padding: 14px 45px 14px 45px;
+			color: #fff;
+			font-size: 16px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.67px;
+			cursor: pointer;
+			&:hover{
+				background: #fff;
+				transition: all 0.3s ease 0s;
+				color: #000;
+			}
+		}
+	}
+}
+.form {
+	&__input {
+		background-color: #3c3c3c;
+		width: 17rem;
+		color: #fff;
+		border-bottom: 2px solid #fff;
+		font-size: 14px;
+		font-weight: 500;
+		text-transform: uppercase;
+		padding: 10px;
+		&:focus{
+			border-bottom: 2px solid #ada074;
+			transition: all 0.3s ease 0s;
+		}
+	}
+}
+.textarea {
+	width: 100%;
+	min-height: 150px;
+	resize: vertical;
+}
+@media (max-width: 768px) {
+	.contact {
+		&__row {
+			padding: 30px 0px 20px 0px;
+		}
+		&__title{
+			margin: 20px 0 0 0;
+			font-size: 22px;
+		}
+		&__btn {
+			padding: 0px 0px 40px 0px;
+			input{
+				font-size: 14px;
+			}
+		}
+	}
+	.form {
+		&__input {
+			margin: 10px 0;
+			width: 100%;
+			font-size: 12px;
+			padding: 10px;
+		}
+	}
+}
+.textarea {
+	margin: 20px 0 0 0;
+	width: 100%;
+	min-height: 70px;
+}
+//========================================================================================================================================
+//========================================================================================================================================
+//========================================================================================================================================
+
+.footer {
+	background: #3c3c3c;
+	border-top: 1px solid #a4a4a4;
+	&__row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	&__nav {
+		margin: 20px 0px 30px 0px;
+	}
+	&__list {
+		display: flex;
+		height: 11px;
+		font-size: 14px;
+		font-weight: 400;
+		cursor: pointer;
+		li{
+			margin: 0px 10px 0px 10px;
+			color: #9c9c9c;
+			&:hover{
+				border-bottom: 1px solid #fff;
+				transition: all 0.3s ease 0s;
+			}
+		}
+	}
+	&__text {
+		color: #9c9c9c;
+		font-size: 14px;
+		font-weight: 400;
+		text-align: center;
+		:nth-child(2){
+			margin: 5px 0 20px 0;
+		}
+	}
+}
+
+
+div.scrollup {
+	position: fixed; /* фиксированная позиция */
+	color: #fff; /* цвет текста */
+	background-color: #9c9c9c; /* цвет заднего фона */
+	right: 20px; /* расстояние от правого края */
+	bottom: 20px; /* расстояние от нижнего края */
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	cursor: pointer; /* форма курсора */
+	display: none; /* не отображать элемент */
+	text-align: center; /*выравнивание содержимого элемента по центру */
+	box-shadow: 0 0 15px rgba(0,0,0,0.5); /* Параметры тени */
+	p{
+		margin: 13px auto 0;
+		font-size: 40px;
+		font-weight: 300;
+	}
+}
+div.scrollup:hover {
+	background-color: #6e6e6e; /* цвет заднего фона при наведении */
+	transition: all 0.3s ease 0s;
+}
